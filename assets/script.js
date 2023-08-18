@@ -33,6 +33,9 @@ arrowLeftButton.addEventListener('click', () => {
 	if (currentIndex > 0) {
 		currentIndex--;
 		updateImg();
+	} else {
+		currentIndex = amountOfSlides - 1;
+		updateImg();
 	}
 });
 
@@ -40,6 +43,9 @@ arrowLeftButton.addEventListener('click', () => {
 arrowRightButton.addEventListener('click', () => {
 	if (currentIndex < amountOfSlides - 1) {
 		currentIndex++;
+		updateImg();
+	} else {
+		currentIndex = 0;
 		updateImg();
 	}
 });
