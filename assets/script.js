@@ -21,19 +21,21 @@ let currentIndex = 0;
 const bannerImg = document.querySelector('.banner-img');
 const arrowLeftButton = document.querySelector('.arrow_left');
 const arrowRightButton = document.querySelector('.arrow_right');
-const dotElements = document.querySelectorAll('.dot');
-const taglineElement = document.querySelector('.tagline');
-const amountOfSlides = slides.length;
+const dotElements = document.querySelectorAll('.dot'); // "points" (indicateurs de position) dans le carrousel
+const taglineElement = document.querySelector('.tagline'); // affiche un texte ou une description liée à l'image actuellement affichée
+const amountOfSlides = slides.length; // prend la valeur de la longueur (nombre d'éléments) du slide (ici, =la bannière)
 
 // Initialisation de la tagline
-taglineElement.innerHTML = slides[currentIndex].tagLine;
+taglineElement.innerHTML = slides[currentIndex].tagLine; // pour mettre à jour le texte sur chaque nouvelle image affichée
 
 // Event listener pour le bouton "arrow_left"
-arrowLeftButton.addEventListener('click', () => {
-	if (currentIndex > 0) {
+arrowLeftButton.addEventListener('click', () => { //EventListener = il surveille l'élément
+	if (currentIndex > 0) { // Si currentIndex supérieur à 0 (=il y a au moins 1 image précédente), alors mon if s'applique et on revient
+		// à l'image précédente
 		currentIndex--;
 		updateImg();
-	} else {
+	} else { // Sinon, c'est que mon currentIndex = 0 (je suis sur la 1ère image) et dans ce cas, mon else s'applique et me dirige sur la
+		// dernière image de mon caroussel
 		currentIndex = amountOfSlides - 1;
 		updateImg();
 	}
@@ -54,11 +56,11 @@ function updateImg() {
 	bannerImg.src = '/assets/images/slideshow/' + slides[currentIndex].image;
 
 	// Bullet points
-	dotElements.forEach((dot, index) => {
-		if (index === currentIndex) {
-			dot.classList.add('dot_selected');
-		} else {
-			dot.classList.remove('dot_selected');
+	dotElements.forEach((dot, index) => { // je vais chercher dans le HTML tous les éléments correspondants aux Bullet points
+		if (index === currentIndex) { // je vérifie que index = currentIndex. Si c'est le cas j'ajoute :
+			dot.classList.add('dot_selected'); // la clase ci-présente, qui permet de mettre le bullet point actuel en surbrillance.
+		} else { // sinon, si index différent de (/) currentIndex, alors :
+			dot.classList.remove('dot_selected'); // je supprime la classe ci-présente afin que le bullet point ne soit pas en surbrillance.
 		}
 	});
 
